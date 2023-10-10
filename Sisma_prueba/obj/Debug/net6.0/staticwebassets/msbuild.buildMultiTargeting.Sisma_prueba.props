@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Sisma_prueba.props" />
+</Project>
