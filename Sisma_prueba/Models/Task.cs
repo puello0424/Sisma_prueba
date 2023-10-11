@@ -9,5 +9,7 @@ public partial class Task
 
     public string Tarea { get; set; } = null!;
 
-    public string Completada { get; set; } = null!;
+    public bool Completada { get; set; } = false!;
+
+   // public string Descripcion { get; set; } = null!;
 }
