@@ -40,6 +40,9 @@ public partial class SismaPruebaContext : DbContext
             entity.Property(e => e.Completada)
                 .HasMaxLength(45)
                 .HasColumnName("completada");
+            entity.Property(e => e.Descripcion)
+                .HasMaxLength(45)
+                .HasColumnName("Descripcion");
             entity.Property(e => e.Tarea)
                 .HasMaxLength(45)
                 .HasColumnName("tarea");

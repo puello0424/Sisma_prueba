@@ -44,6 +44,21 @@ namespace Sisma_prueba.Controllers
 
             return View(task);
         }
+        public async Task<IActionResult> Pendi(int? id)
+        {
+            //return _context.Tasks != null ? 
+            //View(await _context.Tasks.ToListAsync()) :
+            //Problem("Entity set 'SismaPruebaContext.Tasks'  is null.");
+
+            var tasksQuery = _context.Tasks.AsQueryable();
+
+            
+            tasksQuery = tasksQuery.Where(t => t.Completada == false);
+            
+
+            var tasks = await tasksQuery.ToListAsync();
+            return View(tasks);
+        }
 
         // GET: Tasks/Create
         public IActionResult Create()
@@ -56,7 +71,7 @@ namespace Sisma_prueba.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Tarea,Completada")] ModelTask task)
+        public async Task<IActionResult> Create([Bind("Id,Tarea,Completada,Descripcion")] ModelTask task)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +103,7 @@ namespace Sisma_prueba.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Tarea,Completada")] ModelTask task)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Tarea,Completada,Descripcion")] ModelTask task)
         {
             if (id != task.Id)
             {

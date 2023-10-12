@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kJ20mSd2XESBcdTFsHoZUi7PsH7t8cEWD/NehrQiukY=",
+  "Hash": "pcCbJgg75Nd7ZZroGSE+z1MrZT9x+PUoHEjkqNin5IE=",
   "Source": "Sisma_prueba",
   "BasePath": "_content/Sisma_prueba",
   "Mode": "Default",
@@ -865,6 +865,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
+    },
+    {
+      "Identity": "C:\\Users\\samue\\Escritorio\\SISMA\\Sisma_prueba\\Sisma_prueba\\wwwroot\\lib\\img\\1.jpg",
+      "SourceId": "Sisma_prueba",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\samue\\Escritorio\\SISMA\\Sisma_prueba\\Sisma_prueba\\wwwroot\\",
+      "BasePath": "_content/Sisma_prueba",
+      "RelativePath": "lib/img/1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\img\\1.jpg"
     },
     {
       "Identity": "C:\\Users\\samue\\Escritorio\\SISMA\\Sisma_prueba\\Sisma_prueba\\wwwroot\\lib\\jquery\\dist\\jquery.js",

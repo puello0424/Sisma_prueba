@@ -11,5 +11,7 @@ public partial class Task
 
     public bool Completada { get; set; } = false!;
 
-   // public string Descripcion { get; set; } = null!;
+    public string Descripcion { get; set; } = null!;
+
+    //public DateTime? Fecha { get; set;} = null!;
 }
