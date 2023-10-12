@@ -6,9 +6,9 @@
 
 
 <p>
-    <a asp-action="Create" class="btn btn-primary">Nueva tarea</a>
+    <a asp-action="Create" class="btn btn-primary" id="btn">Nueva tarea</a>
 </p>
-<table class="table">
+<table class="table style-table">
     <thead>
         <tr>
             <th>
@@ -47,7 +47,6 @@
                     <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Editar</a> 
                     <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
                     <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                    <a class="btn btn-warning" asp-action="Pendi" asp-route-id="@item.Id">Detalle</a>
 
                 </td>
             </tr>
