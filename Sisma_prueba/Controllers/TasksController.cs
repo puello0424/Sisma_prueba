@@ -59,6 +59,18 @@ namespace Sisma_prueba.Controllers
             var tasks = await tasksQuery.ToListAsync();
             return View(tasks);
         }
+        public async Task<IActionResult> Completa(int? id)
+        {
+
+            var tasksQuery = _context.Tasks.AsQueryable();
+
+
+            tasksQuery = tasksQuery.Where(t => t.Completada == true);
+
+
+            var tasks = await tasksQuery.ToListAsync();
+            return View(tasks);
+        }
 
         // GET: Tasks/Create
         public IActionResult Create()
