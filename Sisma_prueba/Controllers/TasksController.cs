@@ -89,9 +89,23 @@ namespace Sisma_prueba.Controllers
             {
                 _context.Add(task);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                // Retornar un mensaje JSON para indicar que la tarea se ha creado exitosamente
+                return Json(new { success = true, message = "Tarea creada exitosamente." });
             }
-            return View(task);
+
+            // Retornar un mensaje JSON en caso de error
+            return Json(new { success = false, message = "Error al crear la tarea." });
+
+
+
+            /* if (ModelState.IsValid)
+             {
+                 _context.Add(task);
+                 await _context.SaveChangesAsync();
+                 return RedirectToAction(nameof(Index));
+             }
+             return View(task);*/
         }
 
         // GET: Tasks/Edit/5

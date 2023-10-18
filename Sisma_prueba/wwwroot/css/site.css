@@ -34,14 +34,13 @@ body {
 }
 .style-table {
     color: #fff;
-    overflow-y:auto;
 }
 body::before {
     content: "";
-    background-image: url(/lib/img/25.jpg); /* Ruta de la imagen de fondo */
+    background-image: url(/lib/img/25.jpg); 
     background-size: cover;
     background-attachment: fixed;
-    filter: blur(1px); /* Ajusta la cantidad de desenfoque según tu preferencia */
+    filter: blur(1px);
     position: absolute;
     top: 0;
     left: 0;
@@ -51,4 +50,11 @@ body::before {
 }
 #btn {
     float: left;
+}
+.container-4 {
+    max-height: 600px; 
+    overflow-y: auto;
+}
+.row{
+
 }
