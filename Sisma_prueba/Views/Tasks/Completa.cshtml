@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Sisma_prueba.Models.Task>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<table class="table style-table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tarea)
+            </th>
+ 
+                <th>
+                    @Html.DisplayNameFor(model => model.First().Descripcion)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Completada)
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tarea)
+                </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Completada)
+                </td>
+                <td>
+                    <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Editar</a> 
+                    <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

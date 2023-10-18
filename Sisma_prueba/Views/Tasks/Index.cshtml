@@ -4,11 +4,21 @@
     ViewData["Title"] = "Index";
 }
 
-
 <p>
-    <a asp-action="Create" class="btn btn-primary">Nueva tarea</a>
+    <button class="btn btn-primary" id="btnToggleForm">Nueva tarea</button>
 </p>
-<table class="table">
+
+<div id="createForm" style="display: none;">
+    <form id="createTaskForm" asp-action="Create">
+        <label for="tarea">Tarea:</label>
+        <input type="text" id="tarea" name="tarea" />
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" />
+        <button type="button" class="btn btn-primary" id="btnGuardar">Guardar</button>
+    </form>
+</div>
+<div class="container-4">
+<table class="table style-table" id="taskList">
     <thead>
         <tr>
             <th>
@@ -47,12 +57,75 @@
                     <a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Editar</a> 
                     <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.Id">Detalle</a>
                     <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-                    <a class="btn btn-warning" asp-action="Pendi" asp-route-id="@item.Id">Detalle</a>
 
                 </td>
             </tr>
         }
     </tbody>
 </table>
+</div>
+<script>
+    document.getElementById("btnToggleForm").addEventListener("click", function () {
+        var form = document.getElementById("createForm");
+        form.style.display = (form.style.display === "none" || form.style.display === "") ? "block" : "none";
+    });
+
+    document.getElementById("btnGuardar").addEventListener("click", function () {
+        var form = document.getElementById("createTaskForm");
+
+        if (form.tagName.toLowerCase() !== "form") {
+            console.error("El elemento con ID 'createForm' no es un formulario.");
+            return;
+        }
+
+        var formData = new FormData(form);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/Tasks/Create", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    console.log("Tarea creada exitosamente.");
+                    updateTaskList();
+                } else {
+                    console.error("Error al crear la tarea.");
+                }
+            }
+        };
+
+        xhr.send(formData);
+    });
+
+    function updateTaskList() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/Tasks/Index", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var taskListDiv = document.getElementById("taskList");
+                    var tarea = document.getElementById("tarea");
+                    var descripcion = document.getElementById("descripcion");
+                    if (taskListDiv) {
+                        const tempElement = document.createElement('div');
+                        tempElement.innerHTML = xhr.responseText;
+
+                        const tableElement = tempElement.querySelector('#taskList');
+
+                        taskListDiv.innerHTML = tableElement.innerHTML;  // Asignar el HTML interno de la tabla
+                        tarea.value = '';
+                        descripcion.value = '';
+                    }
+                } else {
+                    console.error("Error al cargar la lista de tareas.");
+                }
+            }
+        };
+
+        xhr.send();
+    }
+
+
+</script>
+
+
 
 
